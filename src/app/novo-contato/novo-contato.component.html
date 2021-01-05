@@ -1,0 +1,19 @@
+<div id="cadastro">
+    <h1>Adicionar contato</h1>
+    <form #contatoForm="ngForm">
+
+        <label for="nome">Nome: <input type="text" name="nome" [(ngModel)]="contato.nome" required></label>
+        <label for=sobrenome>Sobrenome: <input type="text" name="sobrenome" id="sobrenome" [(ngModel)]="contato.sobrenome" required></label>
+        <label for="telefone">Telefone: <input type="number" name="telefone" id="telefone" [(ngModel)]="contato.telefone" required pattern="\d{9}"></label>
+        <label for="email">Email: <input type="email" name="email" id="email" [(ngModel)]="contato.email" required email></label>
+        <label for="ani">Aniversário: <input type="date" name="ani" id="ani" [(ngModel)]="contato.aniversario" required></label>
+
+        <button mat-raised-button color="primary" (click)="cadastrar()" [disabled]="contatoForm.invalid">Cadastrar</button>
+    </form>
+</div>
+<div id="lista_contatos">
+    <h2>Contatos</h2>
+    <ul *ngFor="let cont of contatos">
+        <li>Nome: {{cont.nome}} Sobrenome: {{cont.sobrenome}} Telefone: {{cont.telefone}} Email: {{cont.email}} Aniversário: {{cont.aniversario}} <button (click)="excluir(cont)">Excluir Contato</button></li>
+    </ul>
+</div>
